@@ -62,7 +62,7 @@ def test_saddle():
     x = [1, 2, 2, 1]
     assert find_maxima(x) == [1, 2]
     
-def test_saddle():
+def test_four():
     x = [1, 2, 2, 3, 1]
     assert find_maxima(x) == [3]
 
@@ -77,4 +77,4 @@ if __name__ == "__main__":
     test_one()
     test_boundaries()
     test_saddle()
-    test_saddle()
+    test_four()
