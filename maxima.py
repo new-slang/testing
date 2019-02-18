@@ -29,7 +29,7 @@ def find_maxima(x):
                 if x[i] > x[i+j] and x[i-1] < x[i]:
                     for c in range(j):
                         idx.append(i+c)
-                check = False
+                        check = False
         if i==0 and check and x[i+1] < x[i]:
             idx.append(i)
             check = False
