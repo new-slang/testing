@@ -29,9 +29,10 @@ def find_maxima(x):
             if x[i-1] < x[i] and x[i+1] < x[i]:
                 idx.append(i)
                 check = False
+        if not i==len(x)-1 and check:
             if check and x[i]==x[i+1]:
-                j=2
-                while x[i]==x[i+j]:
+                j=1
+                while x[i]==x[i+j] and i+j<len(x)-1:
                     j += 1
                 if x[i] > x[i+j] and x[i-1] < x[i]:
                     for c in range(j):
@@ -43,6 +44,12 @@ def find_maxima(x):
         if i==len(x)-1 and check and x[i-1] < x[i]:
             idx.append(i)
             check = False
+
+    if idx == []:
+        idx.append(len(x)-1)
+        for i in range(len(x)-1):
+            if x[len(x)-1-i] == x[len(x)-2-i]:
+                idx.insert(0,len(x)-2-i)
     return idx
 
 def test_one():
@@ -97,10 +104,10 @@ def test_seven():
     x = [1, 3, 2]
     assert find_maxima(x) == [1]
     
-    x = [1, 3, 3]
-    assert find_maxima(x) == [1, 2]
-    
     x = [3, 3, 1]
+    assert find_maxima(x) == [0, 1]
+    
+    x = [1, 3, 3]
     assert find_maxima(x) == [1, 2]
     
     x = [3, 3, 3]
@@ -108,11 +115,6 @@ def test_seven():
 
 
 if __name__ == "__main__":
-    test_one()
-    test_boundaries()
-    test_saddle()
-    test_four()
-    test_five()
-    test_six()
+    test_seven()
     
     print('Done')
