@@ -40,7 +40,6 @@ def find_maxima(x):
 
 def test_one():
     x = [0, 1, 2, 1, 2, 1, 0]
-    print(find_maxima(x))
     assert find_maxima(x) == [2, 4]
 
     x = [-i**2 for i in range(-3, 4)]
@@ -63,7 +62,7 @@ def test_saddle():
     x = [1, 2, 2, 1]
     assert find_maxima(x) == [1, 2]
     
-def test_four():
+def test_saddle():
     x = [1, 2, 2, 3, 1]
     assert find_maxima(x) == [3]
 
@@ -76,3 +75,6 @@ def test_four():
 
 if __name__ == "__main__":
     test_one()
+    test_boundaries()
+    test_saddle()
+    test_saddle()
