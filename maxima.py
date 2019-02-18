@@ -93,6 +93,19 @@ def test_six():
     x = [4]
     assert find_maxima(x) == [0]
 
+def test_seven():
+    x = [1, 3, 2]
+    assert find_maxima(x) == [1]
+    
+    x = [1, 3, 3]
+    assert find_maxima(x) == [1, 2]
+    
+    x = [3, 3, 1]
+    assert find_maxima(x) == [1, 2]
+    
+    x = [3, 3, 3]
+    assert find_maxima(x) == [0, 1, 2]
+
 
 if __name__ == "__main__":
     test_one()
@@ -101,3 +114,5 @@ if __name__ == "__main__":
     test_four()
     test_five()
     test_six()
+    
+    print('Done')
