@@ -14,8 +14,6 @@ def find_maxima(x):
     Output:
         idx -- list of indices of the local maxima in x
     """
-
-
     idx = []
     for i in range(len(x)):
         check = True
@@ -39,15 +37,6 @@ def find_maxima(x):
             idx.append(i)
             check = False
     return idx
-
-#    idx = []
-#    mem = x[0]
-#    for i in range(len(x)):
-#        # `i` is a local maximum if the signal decreases before and after it
-#        if x[i] > mem:
-#            mem = x[i]
-#    idx.append(mem)
-#    return idx
 
 
 if __name__ == "__main__":
