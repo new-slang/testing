@@ -17,8 +17,15 @@ def find_maxima(x):
     idx = []
     for i in range(len(x)):
         check = True
-        # `i` is a local maximum if the signal decreases before and after it
-        if not i==0 and not i==len(x)-1:
+        if len(x)==1:
+            idx.append(i)
+            check=False
+        if len(x)==2 and check and i==0:
+            if x[i+1] == x[i]:
+                idx.append(i)
+                idx.append(i+1)
+                check=False
+        if not i==0 and not i==len(x)-1 and check:
             if x[i-1] < x[i] and x[i+1] < x[i]:
                 idx.append(i)
                 check = False
@@ -61,7 +68,7 @@ def test_boundaries():
 def test_saddle():
     x = [1, 2, 2, 1]
     assert find_maxima(x) == [1, 2]
-    
+
 def test_four():
     x = [1, 2, 2, 3, 1]
     assert find_maxima(x) == [3]
@@ -72,9 +79,25 @@ def test_four():
     x = [3, 2, 2, 3]
     assert find_maxima(x) == [0, 3]
 
+def test_five():
+    x = [1, 2]
+    assert find_maxima(x) == [1]
+
+    x = [2, 1]
+    assert find_maxima(x) == [0]
+
+    x = [1, 1]
+    assert find_maxima(x) == [0, 1]
+
+def test_six():
+    x = [4]
+    assert find_maxima(x) == [0]
+
 
 if __name__ == "__main__":
     test_one()
     test_boundaries()
     test_saddle()
     test_four()
+    test_five()
+    test_six()
