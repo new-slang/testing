@@ -1,3 +1,6 @@
+import numpy as np
+import pytest
+
 """
 In this exercise we want to test two testing concepts that can
 be tricky:
@@ -17,6 +20,10 @@ Finish the test functions below according to their docstrings.
 """
 
 def test_transposed():
+    x = np.random.random((3, 5))
+    y = np.random.random((5, 4))
+
+    assert np.allclose(x@y, (y.T@x.T).T)
     """Make sure that multiplication of transposed matrices
 
     x × y = (y.T × x.T).T
@@ -32,10 +39,14 @@ def test_transposed():
     ...
 
 def test_size_mismatch():
+    x = np.random.random((3, 5))
+    y = np.random.random((2, 4))
+    with pytest.raises(ValueError):
+        x@y
     """Make sure that ValueError is raised on size mismatch
 
     Matrix multiplication is only possible if the horizontal dimension
     of the first matrix is equal to the vertical dimension of the other
     one.
     """
-    ...
+    pass
